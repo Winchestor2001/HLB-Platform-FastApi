@@ -1,8 +1,9 @@
-fastapi
-piccolo
-pydantic-settings
-pydantic
-PyJWT
-gunicorn
-uvicorn
-psycopg2-binary
+fastapi==0.111.0
+piccolo==1.8.0
+pydantic-settings==2.3.2
+pydantic==2.7.3
+PyJWT==2.8.0
+gunicorn==22.0.0
+uvicorn==0.30.1
+psycopg2-binary==2.9.9
+pytz==2024.1
