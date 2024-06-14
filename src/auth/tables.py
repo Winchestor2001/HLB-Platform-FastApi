@@ -1,7 +1,6 @@
 from piccolo.table import Table
-from piccolo.columns import UUID, Timestamp
-
-from src.settings import settings
+from piccolo.columns import UUID, BigInt, Timestamp, Varchar
+from settings import settings
 
 
 class BaseModel(Table):
@@ -11,3 +10,11 @@ class BaseModel(Table):
 
     class Meta:
         abstract = True
+
+
+class Profile(BaseModel):
+    username = Varchar(length=100)
+    password = Varchar(length=100)
+    role = Varchar(length=30, default='user')
+
+
