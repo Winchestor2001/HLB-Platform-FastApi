@@ -3,12 +3,10 @@ from enum import Enum
 from pydantic import BaseModel
 
 
-class UserRole(str, Enum):
-    user = 'user'
-    admin = 'admin'
-
-
-class UserCreate(BaseModel):
+class UserAuth(BaseModel):
     username: str
     password: str
-    role: UserRole = UserRole.user
+
+
+class UserCreate(UserAuth):
+    password2: str

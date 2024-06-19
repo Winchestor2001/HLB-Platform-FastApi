@@ -18,6 +18,11 @@ class Settings(BaseSettings):
 
     TZ: str = 'Asia/Tashkent'
 
+    SECRET_KEY: str = "123"
+    ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 1000
+    REFRESH_TOKEN_EXPIRE_MINUTES: int = 1000
+
     def get_tz(self):
         tz = pytz.timezone(self.TZ)
         return datetime.now(tz)

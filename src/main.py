@@ -5,11 +5,9 @@ from fastapi.responses import UJSONResponse
 from piccolo_admin import create_admin
 from starlette.routing import Route, Mount
 from starlette.staticfiles import StaticFiles
-from starlette.staticfiles import StaticFiles
 from piccolo.engine import engine_finder
 
 from src import APP_CONFIG
-from src.auth.tables import Profile
 from src.routers import api_router
 
 
@@ -33,8 +31,7 @@ app = FastAPI(
         Mount(
             "/admin/",
             create_admin(
-                tables=APP_CONFIG,
-                auth_table=Profile
+                tables=APP_CONFIG
             ),
         ),
         Mount("/static/", StaticFiles(directory="static")),
@@ -48,4 +45,4 @@ app.include_router(api_router, prefix="/api")
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run('main:app', host="0.0.0.0", port=8000)
+    uvicorn.run('main:app', host="0.0.0.0", port=8000, reload=True)

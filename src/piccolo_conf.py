@@ -18,6 +18,7 @@ DB = PostgresEngine(
 APP_REGISTRY = AppRegistry(
     apps=[
         "piccolo_admin.piccolo_app",
+        "piccolo_api.token_auth.piccolo_app",
         "auth.piccolo_app",
     ]
 )

@@ -1,18 +1,31 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+
+from src.auth.crud import add_user_crud, user_exists_crud, user_login_crud
 from src.auth.tables import Profile
 
-from src.auth import schemas
+from src.auth import schemas, jwt_auth
 
 router = APIRouter()
 
 
-@router.post('/user')
+@router.post('/user_registry')
 async def user_create(user_data: schemas.UserCreate):
-    user = await Profile.create_user(username=user_data.username, password=user_data.password, active=True, role='admin', superuser=True, admin=True)
-    return user
+    if not await user_exists_crud(user_data.username):
+        return await add_user_crud(user_data.dict())
+    else:
+        return {"error": "User already exists"}
 
 
-@router.get('/users')
+@router.post('/user_login')
+async def user_login(user_data: schemas.UserAuth):
+    user = await user_login_crud(user_data.dict())
+    if user:
+        return
+    else:
+        return {"error": "Username or password is incorrect"}
+
+
+@router.get('/users', dependencies=[Depends(jwt_auth.JWTBearer(jwt_auth.JWTAuth()))])
 async def get_users():
     users = await Profile.select()
     return users
