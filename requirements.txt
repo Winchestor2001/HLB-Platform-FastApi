@@ -1,4 +1,5 @@
 fastapi==0.111.0
+passlib==1.7.4
 piccolo==1.8.0
 pydantic-settings==2.3.2
 pydantic==2.7.3

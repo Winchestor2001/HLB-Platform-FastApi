@@ -1,21 +1,6 @@
 # piccolo_project
 
-## Setup
 
-### Install requirements
+piccolo migrations new db --auto --trace
 
-```bash
-pip install -r requirements.txt
-```
-
-### Getting started guide
-
-```bash
-python main.py
-```
-
-### Running tests
-
-```bash
-piccolo tester run
-```
+piccolo migrations forwards all --trace
