@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     DB_HOST: str = 'localhost'
     DB_PORT: int = 5432
     DB_USER: str = 'postgres'
-    DB_PASSWORD: str = 'postgres888'
+    DB_PASSWORD: str = '1234'
     DB_NAME: str = 'hlb_database'
 
     TZ: str = 'Asia/Tashkent'
