@@ -1,8 +1,10 @@
+from typing import Optional
+
 from pydantic import BaseModel
 
 
 class CourseModel(BaseModel):
-    name: str
-    poster_image: str
-    paid: bool
-    price: float
+    name: Optional[str] = None
+    poster_image: Optional[str] = None
+    paid: Optional[bool] = None
+    price: Optional[float] = None

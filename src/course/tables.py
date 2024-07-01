@@ -1,6 +1,6 @@
 from piccolo.columns import Varchar, ForeignKey, Integer, Boolean, Float, Text, M2M, LazyTableReference
 from piccolo.table import Table
-from src.auth.tables import BaseMixin
+from auth.tables import BaseMixin
 
 
 class Course(BaseMixin, Table):
